@@ -33,6 +33,7 @@
       color:var(--text);
       background:var(--bg);
       line-height:1.6;
+      overflow-x:hidden;
     }
 
     a{text-decoration:none;color:inherit}
@@ -204,6 +205,7 @@
       border:none;
       cursor:pointer;
       transition:.25s ease;
+      text-align:center;
     }
 
     .btn:hover{transform:translateY(-2px)}
@@ -222,7 +224,6 @@
       isolation:isolate;
     }
 
-    /* Premium / Luxus transparent glass logo background */
     .hero::before{
       content:"";
       position:absolute;
@@ -875,6 +876,11 @@
         align-items:flex-start;
       }
 
+      .nav-links{
+        width:100%;
+        gap:12px;
+      }
+
       .step{
         grid-template-columns:1fr;
       }
@@ -907,15 +913,295 @@
     }
 
     @media (max-width: 640px){
-      .hero-actions{flex-direction:column}
-      .btn{width:100%}
-      .brand-text h1{font-size:19px}
+      html, body{
+        overflow-x:hidden;
+      }
+
+      .container{
+        width:min(calc(100% - 20px), var(--max));
+      }
+
+      .topbar{
+        font-size:12px;
+        padding:8px 0;
+      }
+
+      .topbar-inner{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:6px;
+      }
+
+      .nav{
+        min-height:auto;
+        padding:12px 0;
+        gap:14px;
+      }
+
+      .brand{
+        gap:12px;
+        width:100%;
+      }
+
+      .logo-shell{
+        width:72px;
+        height:72px;
+      }
+
+      .logo-shell img{
+        width:60px;
+      }
+
+      .brand-text h1{
+        font-size:18px;
+      }
+
+      .brand-text span{
+        font-size:14px;
+        letter-spacing:1px;
+      }
+
+      .brand-text small{
+        font-size:12px;
+      }
+
+      .nav-links{
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        width:100%;
+        gap:10px;
+        font-size:14px;
+      }
+
+      .nav-links a{
+        text-align:center;
+        padding:10px 12px;
+        border-radius:14px;
+        background:rgba(13,59,102,.05);
+      }
+
+      .nav-links .btn{
+        grid-column:1 / -1;
+      }
+
+      .hero{
+        padding:46px 0 38px;
+      }
+
+      .hero::before{
+        width:360px;
+        height:360px;
+        opacity:.07;
+      }
+
+      .hero h2{
+        font-size:32px;
+        line-height:1.08;
+        margin-bottom:12px;
+      }
+
+      .hero p{
+        font-size:15px;
+        line-height:1.7;
+        margin-bottom:18px;
+      }
+
+      .hero-actions{
+        flex-direction:column;
+        gap:10px;
+        margin-bottom:18px;
+      }
+
+      .btn{
+        width:100%;
+        min-height:52px;
+        padding:14px 18px;
+        font-size:15px;
+      }
+
+      .feature-row{
+        gap:10px;
+        margin-top:14px;
+      }
+
+      .feature{
+        padding:14px;
+        font-size:14px;
+        border-radius:16px;
+      }
+
+      .hero-card,
+      .about-box,
+      .contact-box,
+      .form-box{
+        padding:20px;
+        border-radius:20px;
+      }
+
+      .hero-card h3,
+      .about-box h4,
+      .contact-box h4,
+      .form-box h4{
+        font-size:22px;
+        line-height:1.2;
+      }
+
+      section{
+        padding:56px 0;
+      }
+
+      .section-head{
+        margin-bottom:26px;
+      }
+
       .section-head h3,
-      .journey-head h3{font-size:30px}
-      .journey-section{padding:72px 0}
-      .step-card{min-height:auto}
-      .step-content h4{font-size:24px}
-      .journey-cta a{width:100%}
+      .journey-head h3{
+        font-size:28px;
+        line-height:1.15;
+      }
+
+      .section-head p,
+      .journey-head p{
+        font-size:15px;
+        line-height:1.7;
+      }
+
+      .journey-section{
+        padding:64px 0;
+      }
+
+      .journey-head{
+        margin-bottom:30px;
+      }
+
+      .journey-badge{
+        font-size:11px;
+        padding:7px 12px;
+      }
+
+      .step-card{
+        min-height:auto;
+        padding:18px;
+        border-radius:22px;
+      }
+
+      .step-image{
+        min-height:170px;
+        padding:14px;
+        border-radius:18px;
+      }
+
+      .step-image img{
+        max-width:200px;
+        max-height:160px;
+      }
+
+      .step-content{
+        margin-top:14px;
+      }
+
+      .step-content h4{
+        font-size:22px;
+      }
+
+      .step-content p{
+        font-size:14px;
+        line-height:1.7;
+      }
+
+      .step-no{
+        width:38px;
+        height:38px;
+        font-size:14px;
+      }
+
+      .flow-line{
+        height:120px;
+        margin:2px auto 16px;
+      }
+
+      .flow-dot.top{top:20px}
+      .flow-dot.middle{top:52px}
+      .flow-dot.bottom{top:84px}
+
+      .flow-arrow-head{
+        width:14px;
+        height:14px;
+      }
+
+      .journey-cta{
+        margin-top:10px;
+      }
+
+      .journey-cta a{
+        width:100%;
+        padding:15px 18px;
+        font-size:15px;
+      }
+
+      .about-grid,
+      .contact-grid{
+        gap:16px;
+      }
+
+      .about-points,
+      .contact-list{
+        gap:10px;
+      }
+
+      .point,
+      .contact-item{
+        padding:14px;
+        border-radius:14px;
+        font-size:14px;
+      }
+
+      form{
+        gap:12px;
+      }
+
+      input, textarea{
+        padding:14px;
+        border-radius:12px;
+        font-size:15px;
+      }
+
+      textarea{
+        min-height:120px;
+      }
+
+      .cta{
+        padding:22px 18px;
+        border-radius:22px;
+        text-align:center;
+        justify-content:center;
+      }
+
+      .cta h4{
+        font-size:24px;
+        line-height:1.2;
+      }
+
+      .cta > div:last-child{
+        width:100%;
+        display:grid !important;
+        grid-template-columns:1fr;
+        gap:10px !important;
+      }
+
+      footer{
+        margin-top:24px;
+        padding:22px 0 90px;
+        font-size:13px;
+      }
+
+      .whatsapp-float{
+        width:56px;
+        height:56px;
+        right:14px;
+        bottom:14px;
+        font-size:26px;
+      }
     }
   </style>
 </head>
