@@ -8,7 +8,9 @@
   <style>
     :root {
       --navy: #0d3b66;
+      --navy-dark: #0a2947;
       --green: #78a22f;
+      --green-dark: #628625;
       --orange: #ef7d22;
       --text: #1f2937;
       --muted: #6b7280;
@@ -16,12 +18,14 @@
       --card: #ffffff;
       --line: #e5e7eb;
       --shadow: 0 14px 30px rgba(13, 59, 102, 0.08);
-      --radius: 20px;
+      --shadow-strong: 0 24px 50px rgba(13, 59, 102, 0.14);
+      --radius: 22px;
       --max: 1180px;
     }
 
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
+
     body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
@@ -59,13 +63,13 @@
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: rgba(255,255,255,0.95);
+      background: rgba(255,255,255,0.94);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid rgba(229,231,235,0.9);
     }
 
     .nav {
-      min-height: 82px;
+      min-height: 86px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -75,15 +79,64 @@
     .brand {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 16px;
       min-width: 0;
     }
 
+    .brand-logo-wrap {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+      border-radius: 20px;
+      isolation: isolate;
+      flex-shrink: 0;
+    }
+
+    .brand-logo-wrap::before,
+    .brand-logo-wrap::after {
+      content: "";
+      position: absolute;
+      inset: -8px;
+      border-radius: 24px;
+      z-index: -1;
+      filter: blur(18px);
+      opacity: 0.96;
+      animation: logoGlow 3.2s ease-in-out infinite alternate;
+    }
+
+    .brand-logo-wrap::before {
+      background: radial-gradient(circle at left center, rgba(37, 99, 235, 0.95), transparent 55%);
+    }
+
+    .brand-logo-wrap::after {
+      background: radial-gradient(circle at right center, rgba(239, 68, 68, 0.95), transparent 55%);
+    }
+
     .brand img {
-      width: 74px;
+      width: 76px;
       height: auto;
-      border-radius: 12px;
+      border-radius: 14px;
       background: white;
+      object-fit: contain;
+      position: relative;
+      z-index: 2;
+      box-shadow:
+        -12px 0 28px rgba(37, 99, 235, 0.34),
+        12px 0 28px rgba(239, 68, 68, 0.34),
+        0 10px 24px rgba(0, 0, 0, 0.12);
+    }
+
+    @keyframes logoGlow {
+      0% {
+        transform: scale(0.98);
+        opacity: 0.78;
+      }
+      100% {
+        transform: scale(1.03);
+        opacity: 1;
+      }
     }
 
     .brand-text {
@@ -129,24 +182,18 @@
       font-weight: 800;
       border: none;
       cursor: pointer;
-      transition: .2s ease;
+      transition: .25s ease;
     }
 
-    .btn:hover { transform: translateY(-1px); }
+    .btn:hover { transform: translateY(-2px); }
     .btn-primary { background: var(--navy); color: white; }
-    .btn-green { background: var(--green); color: white; }
+    .btn-green { background: linear-gradient(135deg, var(--green), var(--green-dark)); color: white; }
     .btn-outline { border: 2px solid var(--navy); color: var(--navy); background: white; }
-
-    .btn-arrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-    }
 
     .btn-arrow .arrow {
       font-size: 18px;
       line-height: 1;
-      transition: transform .2s ease;
+      transition: transform .25s ease;
     }
 
     .btn-arrow:hover .arrow {
@@ -154,16 +201,17 @@
     }
 
     .hero {
-      padding: 70px 0 52px;
+      padding: 78px 0 58px;
       background:
         radial-gradient(circle at top right, rgba(239,125,34,0.12), transparent 26%),
+        radial-gradient(circle at top left, rgba(37,99,235,0.08), transparent 22%),
         linear-gradient(180deg, #ffffff 0%, #f4f6f8 100%);
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 26px;
+      grid-template-columns: 1.12fr 0.88fr;
+      gap: 28px;
       align-items: center;
     }
 
@@ -181,7 +229,7 @@
     .hero h2 {
       margin: 0 0 16px;
       font-size: clamp(34px, 5vw, 60px);
-      line-height: 1.05;
+      line-height: 1.04;
       color: var(--navy);
     }
 
@@ -207,7 +255,7 @@
     }
 
     .feature {
-      background: white;
+      background: rgba(255,255,255,0.9);
       border: 1px solid var(--line);
       border-radius: 18px;
       padding: 16px;
@@ -224,7 +272,7 @@
     }
 
     .hero-card {
-      padding: 26px;
+      padding: 28px;
       position: relative;
       overflow: hidden;
     }
@@ -267,11 +315,11 @@
       font-weight: 900;
     }
 
-    section { padding: 74px 0; }
+    section { padding: 78px 0; }
 
     .section-head {
       text-align: center;
-      margin-bottom: 34px;
+      margin-bottom: 36px;
     }
 
     .section-head h3 {
@@ -295,10 +343,13 @@
 
     .card {
       padding: 24px;
-      transition: .2s ease;
+      transition: .25s ease;
     }
 
-    .card:hover { transform: translateY(-4px); }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-strong);
+    }
 
     .card .icon {
       width: 54px;
@@ -317,7 +368,202 @@
       color: var(--navy);
     }
 
-    .card p { margin: 0; color: var(--muted); }
+    .card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    /* Smooth photo section */
+    .showcase-section {
+      padding: 92px 0;
+      background:
+        radial-gradient(circle at top left, rgba(37, 99, 235, 0.08), transparent 24%),
+        radial-gradient(circle at top right, rgba(239, 68, 68, 0.08), transparent 24%),
+        linear-gradient(180deg, #ffffff 0%, #eef2f7 100%);
+      overflow: hidden;
+    }
+
+    .showcase-head {
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto 42px;
+    }
+
+    .showcase-badge {
+      display: inline-block;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(13,59,102,0.08);
+      color: var(--navy);
+      font-weight: 800;
+      font-size: 13px;
+      letter-spacing: .5px;
+      margin-bottom: 14px;
+    }
+
+    .showcase-head h3 {
+      margin: 0 0 12px;
+      font-size: clamp(30px, 4vw, 46px);
+      color: var(--navy);
+      line-height: 1.1;
+    }
+
+    .showcase-head p {
+      margin: 0;
+      font-size: 17px;
+      color: var(--muted);
+    }
+
+    .showcase-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .showcase-card {
+      background: rgba(255,255,255,0.84);
+      border: 1px solid rgba(229,231,235,0.95);
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 18px 40px rgba(13, 59, 102, 0.08);
+      backdrop-filter: blur(8px);
+      transition: transform .35s ease, box-shadow .35s ease;
+    }
+
+    .showcase-card:hover {
+      transform: translateY(-9px);
+      box-shadow: 0 28px 58px rgba(13, 59, 102, 0.16);
+    }
+
+    .showcase-image {
+      position: relative;
+      padding: 18px;
+      background:
+        radial-gradient(circle at top left, rgba(37,99,235,0.12), transparent 24%),
+        radial-gradient(circle at top right, rgba(239,68,68,0.12), transparent 24%),
+        linear-gradient(180deg, #f8fbff, #eef3f9);
+    }
+
+    .showcase-image img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 20px;
+      box-shadow: 0 12px 26px rgba(0,0,0,0.08);
+    }
+
+    .showcase-content {
+      padding: 24px;
+    }
+
+    .showcase-step {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #ff7a59, #ff5e57);
+      color: white;
+      font-weight: 900;
+      margin-bottom: 14px;
+      box-shadow: 0 10px 22px rgba(255, 94, 87, 0.28);
+    }
+
+    .showcase-content h4 {
+      margin: 0 0 10px;
+      font-size: 22px;
+      color: var(--navy);
+      line-height: 1.2;
+    }
+
+    .showcase-content p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .showcase-arrow-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 34px 0 0;
+    }
+
+    .showcase-arrow {
+      position: relative;
+      width: 3px;
+      height: 80px;
+      background: linear-gradient(180deg, rgba(255,122,89,0), rgba(255,122,89,0.95), rgba(255,122,89,0));
+      box-shadow: 0 0 12px rgba(255,122,89,0.65), 0 0 26px rgba(255,122,89,0.28);
+      animation: arrowPulse 1.8s ease-in-out infinite;
+      border-radius: 10px;
+    }
+
+    .showcase-arrow::after {
+      content: "";
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      width: 18px;
+      height: 18px;
+      border-right: 3px solid #ff7a59;
+      border-bottom: 3px solid #ff7a59;
+      transform: translateX(-50%) rotate(45deg);
+      filter: drop-shadow(0 0 10px rgba(255,122,89,0.9));
+      animation: arrowDrop 1.8s ease-in-out infinite;
+    }
+
+    @keyframes arrowPulse {
+      0%, 100% {
+        opacity: 0.58;
+        transform: scaleY(1);
+      }
+      50% {
+        opacity: 1;
+        transform: scaleY(1.08);
+      }
+    }
+
+    @keyframes arrowDrop {
+      0%, 100% {
+        transform: translateX(-50%) translateY(0) rotate(45deg);
+      }
+      50% {
+        transform: translateX(-50%) translateY(8px) rotate(45deg);
+      }
+    }
+
+    .showcase-cta {
+      text-align: center;
+      margin-top: 34px;
+    }
+
+    .showcase-cta a {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 17px 30px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #25d366, #1ebd59);
+      color: white;
+      font-weight: 800;
+      box-shadow: 0 14px 28px rgba(37,211,102,0.28);
+      transition: .25s ease;
+      font-size: 17px;
+    }
+
+    .showcase-cta a:hover {
+      transform: translateY(-2px) scale(1.02);
+    }
+
+    .showcase-cta a .arrow {
+      transition: transform .25s ease;
+    }
+
+    .showcase-cta a:hover .arrow {
+      transform: translateX(4px);
+    }
 
     .about-grid, .contact-grid {
       display: grid;
@@ -433,23 +679,46 @@
       z-index: 1001;
     }
 
+    /* Reveal on scroll */
+    .reveal {
+      opacity: 0;
+      transform: translateY(45px);
+      transition: opacity .85s ease, transform .85s ease;
+      will-change: transform, opacity;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     @media (max-width: 960px) {
-      .hero-grid, .services-grid, .about-grid, .contact-grid, .feature-row {
+      .hero-grid,
+      .services-grid,
+      .showcase-grid,
+      .about-grid,
+      .contact-grid,
+      .feature-row {
         grid-template-columns: 1fr;
       }
+
       .nav {
         padding: 14px 0;
         flex-direction: column;
         align-items: flex-start;
       }
-      .brand img { width: 60px; }
+
+      .brand img { width: 62px; }
     }
 
     @media (max-width: 640px) {
       .hero-actions { flex-direction: column; }
       .btn { width: 100%; }
       .brand-text h1 { font-size: 19px; }
-      .section-head h3 { font-size: 30px; }
+      .section-head h3,
+      .showcase-head h3 { font-size: 30px; }
+      .showcase-section { padding: 74px 0; }
+      .showcase-cta a { width: 100%; justify-content: center; }
     }
   </style>
 </head>
@@ -458,7 +727,8 @@
     <div class="container topbar-inner">
       <div>Schnelle Hilfe bei Wespen, Ratten, Mäusen, Bettwanzen und mehr</div>
       <div>
-        Tel: <a href="tel:+498912345678">+49 89 123 45 678</a> · WhatsApp: <a href="https://wa.me/498912345678" target="_blank">Jetzt schreiben</a>
+        Tel: <a href="tel:+498912345678">+49 89 123 45 678</a> · WhatsApp:
+        <a href="https://wa.me/498912345678" target="_blank">Jetzt schreiben</a>
       </div>
     </div>
   </div>
@@ -466,7 +736,9 @@
   <header>
     <div class="container nav">
       <a class="brand" href="#start">
-        <img src="logo.png" alt="Schädlingsbekämpfung Bayern Logo" />
+        <span class="brand-logo-wrap">
+          <img src="logo.png" alt="Schädlingsbekämpfung Bayern Logo" />
+        </span>
         <div class="brand-text">
           <h1>Schädlingsbekämpfung</h1>
           <span>BAYERN</span>
@@ -477,6 +749,7 @@
       <nav class="nav-links">
         <a href="#start">Start</a>
         <a href="#leistungen">Leistungen</a>
+        <a href="#ablauf">Ablauf</a>
         <a href="#ueber-uns">Über uns</a>
         <a href="#kontakt">Kontakt</a>
         <a class="btn btn-green" href="https://wa.me/498912345678?text=Hallo%2C%20ich%20brauche%20Hilfe%20bei%20einem%20Schädlingsproblem." target="_blank">WhatsApp</a>
@@ -487,7 +760,7 @@
   <main>
     <section class="hero" id="start">
       <div class="container hero-grid">
-        <div>
+        <div class="reveal">
           <span class="eyebrow">Schnell erreichbar bei akuten Schädlingsproblemen</span>
           <h2>Direkte Hilfe bei Schädlingsbefall in Bayern</h2>
           <p>
@@ -508,7 +781,7 @@
           </div>
         </div>
 
-        <div class="hero-card">
+        <div class="hero-card reveal">
           <h3>Sofort Kontakt aufnehmen</h3>
           <ul>
             <li>WhatsApp für schnelle und direkte Anfragen</li>
@@ -523,43 +796,43 @@
 
     <section id="leistungen">
       <div class="container">
-        <div class="section-head">
+        <div class="section-head reveal">
           <h3>Unsere Leistungen</h3>
           <p>Professionelle Schädlingsbekämpfung für Privatkunden und Unternehmen. Weitere Schädlinge auf Anfrage.</p>
         </div>
 
         <div class="services-grid">
-          <article class="card">
+          <article class="card reveal">
             <div class="icon">🐝</div>
             <h4>Wespen</h4>
             <p>Sichere und fachgerechte Maßnahmen bei Wespenproblemen rund um Haus, Garten oder Gewerbeobjekte.</p>
           </article>
 
-          <article class="card">
+          <article class="card reveal">
             <div class="icon">🐀</div>
             <h4>Ratten</h4>
             <p>Effektive Bekämpfung und nachhaltige Lösungen gegen Rattenbefall im Innen- und Außenbereich.</p>
           </article>
 
-          <article class="card">
+          <article class="card reveal">
             <div class="icon">🐭</div>
             <h4>Mäuse</h4>
             <p>Schnelle Hilfe bei Mäusebefall in Wohnungen, Kellern, Lagern und gewerblichen Räumen.</p>
           </article>
 
-          <article class="card">
+          <article class="card reveal">
             <div class="icon">🛏️</div>
             <h4>Bettwanzen</h4>
             <p>Diskrete, professionelle Behandlung bei Bettwanzenbefall mit Fokus auf schnelle Unterstützung.</p>
           </article>
 
-          <article class="card">
+          <article class="card reveal">
             <div class="icon">🪳</div>
             <h4>Schaben</h4>
             <p>Zuverlässige Bekämpfung von Schaben in privaten Haushalten, Gastronomie und Unternehmen.</p>
           </article>
 
-          <article class="card">
+          <article class="card reveal">
             <div class="icon">🐜</div>
             <h4>Ameisen</h4>
             <p>Gezielte Maßnahmen gegen Ameisenbefall im Innen- und Außenbereich.</p>
@@ -568,15 +841,82 @@
       </div>
     </section>
 
+    <section class="showcase-section" id="ablauf">
+      <div class="container">
+        <div class="showcase-head reveal">
+          <span class="showcase-badge">KLAR · SCHNELL · PROFESSIONELL</span>
+          <h3>Ein sanfter und klarer Ablauf für Ihre Anfrage</h3>
+          <p>
+            Dieser Bereich ist bewusst elegant aufgebaut, damit Besucher beim Scrollen weich und professionell
+            durch die wichtigsten Schritte geführt werden.
+          </p>
+        </div>
+
+        <div class="showcase-grid">
+          <article class="showcase-card reveal">
+            <div class="showcase-image">
+              <img src="step1.png" alt="Schädlingsproblem erkennen" />
+            </div>
+            <div class="showcase-content">
+              <div class="showcase-step">01</div>
+              <h4>Problem schnell erfassen</h4>
+              <p>
+                Beschreiben Sie kurz, welche Art von Schädlingsbefall vorliegt. Ein klarer erster Eindruck
+                hilft bei einer schnellen Einschätzung.
+              </p>
+            </div>
+          </article>
+
+          <article class="showcase-card reveal">
+            <div class="showcase-image">
+              <img src="step2.png" alt="Details und Bilder senden" />
+            </div>
+            <div class="showcase-content">
+              <div class="showcase-step">02</div>
+              <h4>Bilder oder Details senden</h4>
+              <p>
+                Senden Sie über WhatsApp direkt Bilder oder zusätzliche Informationen, damit wir Ihr Anliegen
+                präziser verstehen können.
+              </p>
+            </div>
+          </article>
+
+          <article class="showcase-card reveal">
+            <div class="showcase-image">
+              <img src="step3.png" alt="Schnelle Rückmeldung erhalten" />
+            </div>
+            <div class="showcase-content">
+              <div class="showcase-step">03</div>
+              <h4>Schnelle Rückmeldung erhalten</h4>
+              <p>
+                Nach Ihrer Nachricht melden wir uns schnell zurück und zeigen Ihnen direkt den nächsten passenden Schritt.
+              </p>
+            </div>
+          </article>
+        </div>
+
+        <div class="showcase-arrow-wrap reveal" aria-hidden="true">
+          <div class="showcase-arrow"></div>
+        </div>
+
+        <div class="showcase-cta reveal">
+          <a href="https://wa.me/498912345678?text=Hallo%2C%20ich%20habe%20ein%20Schädlingsproblem%20und%20brauche%20Hilfe." target="_blank">
+            <span>Jetzt über WhatsApp Kontakt aufnehmen</span>
+            <span class="arrow">➜</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
     <section id="ueber-uns">
       <div class="container">
-        <div class="section-head">
+        <div class="section-head reveal">
           <h3>Über uns</h3>
           <p>Unser Schwerpunkt liegt auf Zuverlässigkeit, professionellem Auftreten und schneller Hilfe im Ernstfall.</p>
         </div>
 
         <div class="about-grid">
-          <div class="about-box">
+          <div class="about-box reveal">
             <h4>Schädlingsbekämpfung Bayern</h4>
             <p>
               Wir unterstützen Privatkunden und Unternehmen bei akuten Schädlingsproblemen. Unser Ziel ist es,
@@ -588,7 +928,7 @@
             </p>
           </div>
 
-          <div class="about-box">
+          <div class="about-box reveal">
             <h4>Warum Kunden uns wählen</h4>
             <div class="about-points">
               <div class="point">Schnelle Reaktion auf neue Anfragen</div>
@@ -604,13 +944,13 @@
 
     <section id="kontakt">
       <div class="container">
-        <div class="section-head">
+        <div class="section-head reveal">
           <h3>Kontakt</h3>
           <p>Kontaktieren Sie uns jetzt direkt per WhatsApp, telefonisch oder über das Formular.</p>
         </div>
 
         <div class="contact-grid">
-          <div class="contact-box">
+          <div class="contact-box reveal">
             <h4>Direkt erreichbar</h4>
             <p style="color: var(--muted); margin-top: 0;">Bei akuten Fällen empfehlen wir WhatsApp oder einen direkten Anruf.</p>
 
@@ -637,7 +977,7 @@
             </div>
           </div>
 
-          <div class="form-box">
+          <div class="form-box reveal">
             <h4>Kontaktformular</h4>
             <form>
               <input type="text" placeholder="Name" />
@@ -655,7 +995,7 @@
 
     <section>
       <div class="container">
-        <div class="cta">
+        <div class="cta reveal">
           <div>
             <h4>Schnelle Hilfe benötigt?</h4>
             <div>Kontaktieren Sie Schädlingsbekämpfung Bayern jetzt direkt über WhatsApp oder telefonisch.</div>
@@ -679,5 +1019,21 @@
   </footer>
 
   <a class="whatsapp-float" href="https://wa.me/498912345678?text=Hallo%2C%20ich%20habe%20ein%20Schädlingsproblem." target="_blank" aria-label="WhatsApp Kontakt">✆</a>
+
+  <script>
+    const revealItems = document.querySelectorAll('.reveal');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, {
+      threshold: 0.12
+    });
+
+    revealItems.forEach((item) => observer.observe(item));
+  </script>
 </body>
 </html>
