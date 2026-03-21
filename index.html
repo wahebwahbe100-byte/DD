@@ -4,7 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Schädlingsbekämpfung Bayern</title>
-  <meta name="description" content="Schnelle und professionelle Schädlingsbekämpfung in Bayern. Direkter Kontakt per WhatsApp, Telefon oder Kontaktformular." />
+  <meta
+    name="description"
+    content="Schnelle und professionelle Schädlingsbekämpfung in Bayern. Direkter Kontakt per WhatsApp, Telefon oder Kontaktformular."
+  />
   <style>
     :root{
       --navy:#0d3b66;
@@ -84,7 +87,6 @@
       min-width:0;
     }
 
-    /* Animated logo */
     .logo-shell{
       position:relative;
       display:inline-flex;
@@ -276,7 +278,7 @@
       text-align:center;
     }
 
-    .hero-card, .card, .contact-box, .form-box, .about-box{
+    .hero-card, .card, .contact-box, .form-box, .about-box, .benefit-card{
       background:var(--card);
       border:1px solid var(--line);
       border-radius:var(--radius);
@@ -347,23 +349,27 @@
       font-size:17px;
     }
 
-    .services-grid{
+    .services-grid,
+    .benefits-grid{
       display:grid;
       grid-template-columns:repeat(3,1fr);
       gap:22px;
     }
 
-    .card{
+    .card,
+    .benefit-card{
       padding:24px;
       transition:.25s ease;
     }
 
-    .card:hover{
+    .card:hover,
+    .benefit-card:hover{
       transform:translateY(-5px);
       box-shadow:var(--shadow-strong);
     }
 
-    .card .icon{
+    .card .icon,
+    .benefit-icon{
       width:54px;
       height:54px;
       border-radius:14px;
@@ -371,21 +377,31 @@
       place-items:center;
       font-size:24px;
       background:linear-gradient(135deg, rgba(13,59,102,.1), rgba(120,162,47,.16));
-      margin-bottom:16px;
+      margin:0 auto 16px;
     }
 
-    .card h4{
+    .card h4,
+    .benefit-card h4{
       margin:0 0 10px;
       font-size:23px;
       color:var(--navy);
+      text-align:center;
     }
 
-    .card p{
+    .card p,
+    .benefit-card p{
       margin:0;
       color:var(--muted);
+      text-align:center;
     }
 
-    /* Dark section */
+    .benefits-section{
+      background:
+        radial-gradient(circle at top left, rgba(37,99,235,.08), transparent 20%),
+        radial-gradient(circle at bottom right, rgba(120,162,47,.10), transparent 24%),
+        linear-gradient(180deg,#ffffff 0%, #f4f6f8 100%);
+    }
+
     .journey-section{
       position:relative;
       overflow:hidden;
@@ -480,7 +496,6 @@
       pointer-events:none;
     }
 
-    /* Realistic glass background for images */
     .step-image{
       position:relative;
       border-radius:24px;
@@ -878,6 +893,7 @@
     @media (max-width: 980px){
       .hero-grid,
       .services-grid,
+      .benefits-grid,
       .about-grid,
       .contact-grid,
       .feature-row{
@@ -931,7 +947,7 @@
 <body>
   <div class="topbar">
     <div class="container topbar-inner">
-      <div>Schnelle Hilfe bei Wespen, Ratten, Mäusen, Bettwanzen und mehr</div>
+      <div>Schnelle Hilfe bei Wespen, Ratten, Mäusen, Schaben, Bettwanzen und mehr</div>
       <div>
         Tel: <a href="tel:+498912345678">+49 89 123 45 678</a> · WhatsApp:
         <a href="https://wa.me/498912345678" target="_blank">Jetzt schreiben</a>
@@ -955,6 +971,7 @@
       <nav class="nav-links">
         <a href="#start">Start</a>
         <a href="#leistungen">Leistungen</a>
+        <a href="#vorteile">Vorteile</a>
         <a href="#ablauf">Ablauf</a>
         <a href="#ueber-uns">Über uns</a>
         <a href="#kontakt">Kontakt</a>
@@ -970,8 +987,9 @@
           <span class="eyebrow">Schnell erreichbar bei akuten Schädlingsproblemen</span>
           <h2>Direkte Hilfe bei Schädlingsbefall in Bayern</h2>
           <p>
-            Viele Kunden brauchen schnelle Unterstützung. Deshalb ist diese Website bewusst klar und einfach aufgebaut:
-            WhatsApp, Telefon und Kontaktformular sind sofort sichtbar, damit Sie uns ohne Umwege erreichen.
+            Ob Wespen, Ratten, Schaben oder andere Schädlinge – wir helfen schnell, professionell
+            und zuverlässig. Kontaktieren Sie uns direkt per WhatsApp, Telefon oder Formular und
+            erhalten Sie ohne Umwege schnelle Unterstützung.
           </p>
 
           <div class="hero-actions">
@@ -1029,13 +1047,53 @@
       </div>
     </section>
 
+    <section class="benefits-section" id="vorteile">
+      <div class="container">
+        <div class="section-head reveal">
+          <h3>Warum Schädlingsbekämpfung Bayern?</h3>
+          <p>
+            Mehr als nur Bekämpfung – wir sorgen für echte Sauberkeit, Ruhe und Sicherheit in Ihrem Zuhause.
+          </p>
+        </div>
+
+        <div class="benefits-grid">
+          <article class="benefit-card reveal">
+            <div class="benefit-icon">✨</div>
+            <h4>Sauberes & hygienisches Zuhause</h4>
+            <p>
+              Befreien Sie Ihr Zuhause endgültig von Schädlingen und genießen Sie ein sauberes,
+              hygienisches und sorgenfreies Umfeld.
+            </p>
+          </article>
+
+          <article class="benefit-card reveal">
+            <div class="benefit-icon">😴</div>
+            <h4>Ruhiger & erholsamer Schlaf</h4>
+            <p>
+              Verabschieden Sie sich von Stress und nächtlicher Unruhe – schlafen Sie wieder ruhig
+              und ungestört ohne Insekten.
+            </p>
+          </article>
+
+          <article class="benefit-card reveal">
+            <div class="benefit-icon">🛡️</div>
+            <h4>Schutz für Ihre Familie</h4>
+            <p>
+              Erleben Sie echte Sauberkeit, mehr Lebensqualität und dauerhaften Schutz
+              für Sie und Ihre Familie.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <section class="journey-section" id="ablauf">
       <div class="container">
         <div class="journey-head reveal">
           <span class="journey-badge">STARK · KLAR · WIRKSAM</span>
-          <h3>Die starke Wirkung von Schädlingsbekämpfung BAYERN</h3>
+          <h3>So einfach kommen Sie zu schneller Hilfe</h3>
           <p>
-            Drei klare Schritte zeigen das Problem, die Wirkung und das Ergebnis – modern dargestellt mit leuchtender Führung.
+            In drei klaren Schritten begleiten wir Sie von der ersten Anfrage bis zur wirksamen Lösung.
           </p>
         </div>
 
@@ -1043,14 +1101,14 @@
           <div class="step right">
             <article class="step-card reveal">
               <div class="step-image">
-                <img src="step1.png" alt="Leiden Sie unter Insekten" />
+                <img src="step1.png" alt="Schädlingsproblem erkennen" />
               </div>
               <div class="step-content">
                 <div class="step-no">01</div>
-                <h4>Leiden Sie unter Insekten?</h4>
+                <h4>Problem melden</h4>
                 <p>
-                  Das Spray von Schädlingsbekämpfung BAYERN ist die schnelle und effektive Lösung,
-                  um Schädlinge sofort zu beseitigen und dauerhaft fernzuhalten.
+                  Sie kontaktieren uns schnell und unkompliziert per WhatsApp, Telefon oder Formular
+                  und schildern Ihr Schädlingsproblem.
                 </p>
               </div>
             </article>
@@ -1066,14 +1124,14 @@
           <div class="step left">
             <article class="step-card reveal">
               <div class="step-image">
-                <img src="step2.png" alt="Starke Wirkung ab der ersten Anwendung" />
+                <img src="step2.png" alt="Schnelle und starke Wirkung" />
               </div>
               <div class="step-content">
                 <div class="step-no">02</div>
-                <h4>Starke Wirkung ab der ersten Anwendung</h4>
+                <h4>Schnelle und professionelle Hilfe</h4>
                 <p>
-                  Mit seiner kraftvollen Formel bekämpft dieses Spray Insekten sofort
-                  und schützt Ihr Zuhause langfristig vor erneutem Befall.
+                  Wir analysieren die Situation und bieten eine wirksame, professionelle Lösung
+                  gegen den Schädlingsbefall.
                 </p>
               </div>
             </article>
@@ -1095,15 +1153,15 @@
                 <div class="step-no">03</div>
                 <h4>Sauberkeit und Ruhe zurückgewinnen</h4>
                 <p>
-                  Mit Schädlingsbekämpfung BAYERN gewinnen Sie Sauberkeit, Sicherheit und Ruhe
-                  in Ihrem Zuhause zurück – einfach und zuverlässig.
+                  Genießen Sie wieder ein sauberes, geschütztes und ruhiges Zuhause – sicher,
+                  hygienisch und ohne störende Schädlinge.
                 </p>
               </div>
             </article>
           </div>
 
           <div class="journey-cta reveal">
-            <a href="https://wa.me/498912345678?text=Hallo%2C%20ich%20interessiere%20mich%20für%20Ihr%20Produkt." target="_blank">
+            <a href="https://wa.me/498912345678?text=Hallo%2C%20ich%20interessiere%20mich%20für%20Ihre%20Schädlingsbekämpfung." target="_blank">
               <span>Jetzt über WhatsApp anfragen</span>
               <span class="arrow">➜</span>
             </a>
@@ -1123,8 +1181,8 @@
           <div class="about-box reveal">
             <h4>Schädlingsbekämpfung Bayern</h4>
             <p>
-              Wir unterstützen Privatkunden und Unternehmen bei akuten Schädlingsproblemen. Unser Ziel ist es,
-              schnell erreichbar zu sein und unkomplizierte Kontaktwege anzubieten.
+              Wir unterstützen Privatkunden und Unternehmen bei akuten Schädlingsproblemen.
+              Unser Ziel ist es, schnell erreichbar zu sein und unkomplizierte Kontaktwege anzubieten.
             </p>
             <p>
               Besonders wichtig ist uns die direkte Kommunikation: per WhatsApp für schnelle Anfragen,
@@ -1165,7 +1223,7 @@
 
               <div class="contact-item">
                 <strong>WhatsApp</strong>
-                <a href="https://wa.me/498912345678?text=Hallo%2C%20ich%20interessiere%20mich%20für%20Ihr%20Produkt." target="_blank">Jetzt Nachricht senden</a>
+                <a href="https://wa.me/498912345678?text=Hallo%2C%20ich%20interessiere%20mich%20für%20Ihre%20Dienstleistung." target="_blank">Jetzt Nachricht senden</a>
               </div>
 
               <div class="contact-item">
@@ -1199,7 +1257,7 @@
             <div>Kontaktieren Sie Schädlingsbekämpfung Bayern jetzt direkt über WhatsApp oder telefonisch.</div>
           </div>
           <div style="display:flex; gap:12px; flex-wrap:wrap;">
-            <a class="btn btn-green" href="https://wa.me/498912345678?text=Hallo%2C%20ich%20interessiere%20mich%20für%20Ihr%20Produkt." target="_blank">
+            <a class="btn btn-green" href="https://wa.me/498912345678?text=Hallo%2C%20ich%20interessiere%20mich%20für%20Ihre%20Schädlingsbekämpfung." target="_blank">
               <span>WhatsApp</span>
               <span>➜</span>
             </a>
@@ -1216,7 +1274,7 @@
     </div>
   </footer>
 
-  <a class="whatsapp-float" href="https://wa.me/498912345678?text=Hallo%2C%20ich%20interessiere%20mich%20für%20Ihr%20Produkt." target="_blank" aria-label="WhatsApp Kontakt">✆</a>
+  <a class="whatsapp-float" href="https://wa.me/498912345678?text=Hallo%2C%20ich%20interessiere%20mich%20für%20Ihre%20Schädlingsbekämpfung." target="_blank" aria-label="WhatsApp Kontakt">✆</a>
 
   <script>
     const revealItems = document.querySelectorAll('.reveal');
