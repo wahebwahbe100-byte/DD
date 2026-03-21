@@ -12,7 +12,6 @@
       --green:#78a22f;
       --green-2:#5e8420;
       --orange:#ff8a68;
-      --orange-2:#ff6c55;
       --text:#1f2937;
       --muted:#6b7280;
       --bg:#f4f6f8;
@@ -85,7 +84,7 @@
       min-width:0;
     }
 
-    /* LOGO */
+    /* Animated logo */
     .logo-shell{
       position:relative;
       display:inline-flex;
@@ -101,15 +100,14 @@
     .logo-shell::after{
       content:"";
       position:absolute;
-      inset:-10px;
       border-radius:28px;
-      z-index:1;
-      filter:blur(22px);
-      opacity:.95;
       pointer-events:none;
     }
 
     .logo-shell::before{
+      inset:-10px;
+      z-index:1;
+      filter:blur(22px);
       background:
         radial-gradient(circle at left center, rgba(37,99,235,.92), transparent 40%),
         radial-gradient(circle at right top, rgba(239,68,68,.88), transparent 36%),
@@ -118,14 +116,11 @@
     }
 
     .logo-shell::after{
-      inset:-2px;
-      border-radius:24px;
-      background:linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,0));
+      inset:-1px;
       z-index:2;
-      filter:none;
+      background:linear-gradient(135deg, rgba(255,255,255,.12), rgba(255,255,255,0));
       animation:logoShine 3.8s linear infinite;
       mix-blend-mode:screen;
-      pointer-events:none;
     }
 
     .logo-shell img{
@@ -155,17 +150,14 @@
       0%,100%{transform:translateY(0)}
       50%{transform:translateY(-7px)}
     }
-
     @keyframes logoPulse{
       0%,100%{transform:scale(1)}
       50%{transform:scale(1.035)}
     }
-
     @keyframes logoGlow{
       0%{opacity:.72; transform:scale(.98)}
       100%{opacity:1; transform:scale(1.04)}
     }
-
     @keyframes logoShine{
       0%{transform:translateX(-18px); opacity:0}
       15%{opacity:.5}
@@ -393,7 +385,7 @@
       color:var(--muted);
     }
 
-    /* FLOW SECTION */
+    /* Dark section */
     .journey-section{
       position:relative;
       overflow:hidden;
@@ -463,13 +455,8 @@
       margin:0 0 18px;
     }
 
-    .step.right .step-card{
-      grid-column:3;
-    }
-
-    .step.left .step-card{
-      grid-column:1;
-    }
+    .step.right .step-card{ grid-column:3; }
+    .step.left .step-card{ grid-column:1; }
 
     .step-card{
       position:relative;
@@ -479,34 +466,86 @@
       padding:22px;
       box-shadow:0 20px 50px rgba(0,0,0,.26);
       backdrop-filter:blur(10px);
-      min-height:320px;
+      min-height:340px;
+      overflow:hidden;
     }
 
-    .step-image{
-      border-radius:22px;
-      padding:16px;
-      min-height:190px;
+    .step-card::before{
+      content:"";
+      position:absolute;
+      inset:0;
       background:
-        radial-gradient(circle at top left, rgba(255,140,92,.12), transparent 35%),
-        radial-gradient(circle at top right, rgba(37,99,235,.10), transparent 35%),
-        rgba(255,255,255,.03);
-      border:1px solid rgba(255,255,255,.08);
+        radial-gradient(circle at top left, rgba(255,255,255,.10), transparent 28%),
+        linear-gradient(135deg, rgba(255,255,255,.05), rgba(255,255,255,0));
+      pointer-events:none;
+    }
+
+    /* Realistic glass background for images */
+    .step-image{
+      position:relative;
+      border-radius:24px;
+      padding:18px;
+      min-height:210px;
       display:flex;
       align-items:center;
       justify-content:center;
       overflow:hidden;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.18), rgba(255,255,255,.05)),
+        rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.18);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.22),
+        inset 0 -14px 28px rgba(255,255,255,.03),
+        0 12px 30px rgba(0,0,0,.18);
+      backdrop-filter:blur(16px) saturate(1.1);
+      -webkit-backdrop-filter:blur(16px) saturate(1.1);
+      isolation:isolate;
+    }
+
+    .step-image::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(circle at 18% 18%, rgba(255,255,255,.28), transparent 22%),
+        linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,0) 35%),
+        radial-gradient(circle at 85% 85%, rgba(37,99,235,.10), transparent 24%),
+        radial-gradient(circle at 15% 85%, rgba(255,138,104,.09), transparent 24%);
+      pointer-events:none;
+      z-index:1;
+    }
+
+    .step-image::after{
+      content:"";
+      position:absolute;
+      top:10px;
+      left:12px;
+      right:12px;
+      height:34%;
+      border-radius:18px;
+      background:linear-gradient(180deg, rgba(255,255,255,.24), rgba(255,255,255,0));
+      opacity:.8;
+      pointer-events:none;
+      z-index:1;
     }
 
     .step-image img{
       width:100%;
-      max-width:280px;
+      max-width:270px;
       max-height:220px;
       object-fit:contain;
-      filter:drop-shadow(0 18px 26px rgba(0,0,0,.34));
+      position:relative;
+      z-index:2;
+      filter:
+        drop-shadow(0 18px 26px rgba(0,0,0,.34))
+        drop-shadow(0 0 8px rgba(255,255,255,.08));
     }
 
     .step-content{
       margin-top:18px;
+      position:relative;
+      z-index:2;
     }
 
     .step-no{
@@ -537,36 +576,6 @@
       font-size:16px;
     }
 
-    .step-list{
-      margin-top:14px;
-      display:grid;
-      gap:10px;
-    }
-
-    .step-list span{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      color:rgba(255,255,255,.90);
-      font-weight:600;
-      font-size:15px;
-    }
-
-    .step-list span::before{
-      content:"✓";
-      width:20px;
-      height:20px;
-      flex:0 0 20px;
-      border-radius:50%;
-      display:grid;
-      place-items:center;
-      background:rgba(120,162,47,.2);
-      color:#b8eb60;
-      font-size:12px;
-      font-weight:900;
-    }
-
-    /* CENTER VERTICAL GLOW ARROW */
     .flow-line{
       position:relative;
       width:24px;
@@ -727,13 +736,8 @@
     }
 
     .journey-cta a .arrow{
-      transition:transform .25s ease;
       filter:drop-shadow(0 0 10px rgba(255,255,255,.32));
       animation:waArrowGlow 1.2s ease-in-out infinite;
-    }
-
-    .journey-cta a:hover .arrow{
-      transform:translateX(4px);
     }
 
     @keyframes ctaShine{
@@ -859,7 +863,6 @@
       z-index:1001;
     }
 
-    /* reveal */
     .reveal{
       opacity:0;
       transform:translateY(48px);
@@ -1029,11 +1032,10 @@
     <section class="journey-section" id="ablauf">
       <div class="container">
         <div class="journey-head reveal">
-          <span class="journey-badge">LEUCHTENDER ABLAUF · MODERN · KLAR</span>
-          <h3>So einfach funktioniert Ihre Anfrage bei uns</h3>
+          <span class="journey-badge">STARK · KLAR · WIRKSAM</span>
+          <h3>Die starke Wirkung von Schädlingsbekämpfung BAYERN</h3>
           <p>
-            Ein moderner Ablauf mit Bildern rechts und links, einer leuchtenden vertikalen Linie in der Mitte
-            und direktem WhatsApp-Kontakt am Ende.
+            Drei klare Schritte zeigen das Problem, die Wirkung und das Ergebnis – modern dargestellt mit leuchtender Führung.
           </p>
         </div>
 
@@ -1041,18 +1043,15 @@
           <div class="step right">
             <article class="step-card reveal">
               <div class="step-image">
-                <img src="step1.png" alt="Erster Schritt" />
+                <img src="step1.png" alt="Leiden Sie unter Insekten" />
               </div>
               <div class="step-content">
                 <div class="step-no">01</div>
-                <h4>Problem erkennen und melden</h4>
+                <h4>Leiden Sie unter Insekten?</h4>
                 <p>
-                  Der Besucher sieht direkt das Problem, versteht den Nutzen und wird visuell zur nächsten Phase geführt.
+                  Das Spray von Schädlingsbekämpfung BAYERN ist die schnelle und effektive Lösung,
+                  um Schädlinge sofort zu beseitigen und dauerhaft fernzuhalten.
                 </p>
-                <div class="step-list">
-                  <span>Klare Botschaft</span>
-                  <span>Professioneller erster Eindruck</span>
-                </div>
               </div>
             </article>
           </div>
@@ -1067,18 +1066,15 @@
           <div class="step left">
             <article class="step-card reveal">
               <div class="step-image">
-                <img src="step2.png" alt="Zweiter Schritt" />
+                <img src="step2.png" alt="Starke Wirkung ab der ersten Anwendung" />
               </div>
               <div class="step-content">
                 <div class="step-no">02</div>
-                <h4>Bilder oder Details senden</h4>
+                <h4>Starke Wirkung ab der ersten Anwendung</h4>
                 <p>
-                  Über WhatsApp können Bilder, Beschreibungen und wichtige Informationen schnell übermittelt werden.
+                  Mit seiner kraftvollen Formel bekämpft dieses Spray Insekten sofort
+                  und schützt Ihr Zuhause langfristig vor erneutem Befall.
                 </p>
-                <div class="step-list">
-                  <span>Schneller Austausch</span>
-                  <span>Mehr Vertrauen durch klare Struktur</span>
-                </div>
               </div>
             </article>
           </div>
@@ -1093,25 +1089,22 @@
           <div class="step right">
             <article class="step-card reveal">
               <div class="step-image">
-                <img src="step3.png" alt="Dritter Schritt" />
+                <img src="step3.png" alt="Sauberkeit und Ruhe zurückgewinnen" />
               </div>
               <div class="step-content">
                 <div class="step-no">03</div>
-                <h4>Schnelle Rückmeldung und Lösung</h4>
+                <h4>Sauberkeit und Ruhe zurückgewinnen</h4>
                 <p>
-                  Nach der Anfrage erfolgt schnell eine Rückmeldung, damit der Kunde direkt den nächsten Schritt kennt.
+                  Mit Schädlingsbekämpfung BAYERN gewinnen Sie Sauberkeit, Sicherheit und Ruhe
+                  in Ihrem Zuhause zurück – einfach und zuverlässig.
                 </p>
-                <div class="step-list">
-                  <span>Schnelle Reaktion</span>
-                  <span>Direkter Weg zum Kontakt</span>
-                </div>
               </div>
             </article>
           </div>
 
           <div class="journey-cta reveal">
-            <a href="https://wa.me/498912345678?text=Hallo%2C%20ich%20habe%20ein%20Schädlingsproblem%20und%20brauche%20Hilfe." target="_blank">
-              <span>Jetzt über WhatsApp Kontakt aufnehmen</span>
+            <a href="https://wa.me/498912345678?text=Hallo%2C%20ich%20interessiere%20mich%20für%20Ihr%20Produkt." target="_blank">
+              <span>Jetzt über WhatsApp anfragen</span>
               <span class="arrow">➜</span>
             </a>
           </div>
@@ -1146,7 +1139,6 @@
               <div class="point">Kompetentes und seriöses Auftreten</div>
               <div class="point">Klare Kommunikation ohne Umwege</div>
               <div class="point">WhatsApp und Telefon sofort sichtbar</div>
-              <div class="point">Einsatz in Bayern und Umgebung</div>
             </div>
           </div>
         </div>
@@ -1173,17 +1165,12 @@
 
               <div class="contact-item">
                 <strong>WhatsApp</strong>
-                <a href="https://wa.me/498912345678?text=Hallo%2C%20ich%20habe%20ein%20Schädlingsproblem%20und%20brauche%20Hilfe." target="_blank">Jetzt Nachricht senden</a>
+                <a href="https://wa.me/498912345678?text=Hallo%2C%20ich%20interessiere%20mich%20für%20Ihr%20Produkt." target="_blank">Jetzt Nachricht senden</a>
               </div>
 
               <div class="contact-item">
                 <strong>E-Mail</strong>
                 <a href="mailto:info@schaedlingsbekaempfung-bayern.de">info@schaedlingsbekaempfung-bayern.de</a>
-              </div>
-
-              <div class="contact-item">
-                <strong>Einsatzgebiet</strong>
-                Bayern und Umgebung
               </div>
             </div>
           </div>
@@ -1212,7 +1199,7 @@
             <div>Kontaktieren Sie Schädlingsbekämpfung Bayern jetzt direkt über WhatsApp oder telefonisch.</div>
           </div>
           <div style="display:flex; gap:12px; flex-wrap:wrap;">
-            <a class="btn btn-green" href="https://wa.me/498912345678?text=Hallo%2C%20ich%20brauche%20dringend%20Hilfe%20bei%20einem%20Schädlingsproblem." target="_blank">
+            <a class="btn btn-green" href="https://wa.me/498912345678?text=Hallo%2C%20ich%20interessiere%20mich%20für%20Ihr%20Produkt." target="_blank">
               <span>WhatsApp</span>
               <span>➜</span>
             </a>
@@ -1229,7 +1216,7 @@
     </div>
   </footer>
 
-  <a class="whatsapp-float" href="https://wa.me/498912345678?text=Hallo%2C%20ich%20habe%20ein%20Schädlingsproblem." target="_blank" aria-label="WhatsApp Kontakt">✆</a>
+  <a class="whatsapp-float" href="https://wa.me/498912345678?text=Hallo%2C%20ich%20interessiere%20mich%20für%20Ihr%20Produkt." target="_blank" aria-label="WhatsApp Kontakt">✆</a>
 
   <script>
     const revealItems = document.querySelectorAll('.reveal');
