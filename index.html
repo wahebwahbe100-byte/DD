@@ -137,6 +137,22 @@
     .btn-green { background: var(--green); color: white; }
     .btn-outline { border: 2px solid var(--navy); color: var(--navy); background: white; }
 
+    .btn-arrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-arrow .arrow {
+      font-size: 18px;
+      line-height: 1;
+      transition: transform .2s ease;
+    }
+
+    .btn-arrow:hover .arrow {
+      transform: translateX(4px);
+    }
+
     .hero {
       padding: 70px 0 52px;
       background:
@@ -450,7 +466,7 @@
   <header>
     <div class="container nav">
       <a class="brand" href="#start">
-        <img src="/mnt/data/Screenshot 2026-03-21 204537.png" alt="Schädlingsbekämpfung Bayern Logo" />
+        <img src="logo.png" alt="Schädlingsbekämpfung Bayern Logo" />
         <div class="brand-text">
           <h1>Schädlingsbekämpfung</h1>
           <span>BAYERN</span>
@@ -645,7 +661,10 @@
             <div>Kontaktieren Sie Schädlingsbekämpfung Bayern jetzt direkt über WhatsApp oder telefonisch.</div>
           </div>
           <div style="display:flex; gap:12px; flex-wrap:wrap;">
-            <a class="btn btn-green" href="https://wa.me/498912345678?text=Hallo%2C%20ich%20brauche%20dringend%20Hilfe%20bei%20einem%20Schädlingsproblem." target="_blank">WhatsApp</a>
+            <a class="btn btn-green btn-arrow" href="https://wa.me/498912345678?text=Hallo%2C%20ich%20brauche%20dringend%20Hilfe%20bei%20einem%20Schädlingsproblem." target="_blank">
+              <span>WhatsApp</span>
+              <span class="arrow">➜</span>
+            </a>
             <a class="btn btn-outline" style="background:white;" href="tel:+498912345678">Anrufen</a>
           </div>
         </div>
