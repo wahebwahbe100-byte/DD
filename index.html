@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Schädlingsbekämpfung Bayern</title>
+  <meta name="description" content="Schnelle und professionelle Schädlingsbekämpfung in Bayern. Direkter Kontakt per WhatsApp, Telefon oder Kontaktformular." />
+  <style>
+    :root {
+      --navy: #0d3b66;
+      --green: #78a22f;
+      --orange: #ef7d22;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --bg: #f4f6f8;
+      --card: #ffffff;
+      --line: #e5e7eb;
+      --shadow: 0 14px 30px rgba(13, 59, 102, 0.08);
+      --radius: 20px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+    }
+
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+
+    .container {
+      width: min(calc(100% - 32px), var(--max));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      background: var(--navy);
+      color: white;
+      padding: 10px 0;
+      font-size: 14px;
+    }
+
+    .topbar-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .topbar a { font-weight: 700; }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(229,231,235,0.9);
+    }
+
+    .nav {
+      min-height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .brand img {
+      width: 74px;
+      height: auto;
+      border-radius: 12px;
+      background: white;
+    }
+
+    .brand-text {
+      min-width: 0;
+    }
+
+    .brand-text h1 {
+      font-size: 23px;
+      line-height: 1.1;
+      margin: 0;
+      color: var(--navy);
+    }
+
+    .brand-text span {
+      display: block;
+      color: var(--green);
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      margin-top: 4px;
+    }
+
+    .brand-text small {
+      color: var(--muted);
+      display: block;
+      margin-top: 4px;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      align-items: center;
+      font-weight: 700;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 22px;
+      border-radius: 999px;
+      font-weight: 800;
+      border: none;
+      cursor: pointer;
+      transition: .2s ease;
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary { background: var(--navy); color: white; }
+    .btn-green { background: var(--green); color: white; }
+    .btn-outline { border: 2px solid var(--navy); color: var(--navy); background: white; }
+
+    .hero {
+      padding: 70px 0 52px;
+      background:
+        radial-gradient(circle at top right, rgba(239,125,34,0.12), transparent 26%),
+        linear-gradient(180deg, #ffffff 0%, #f4f6f8 100%);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 26px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 8px 14px;
+      background: rgba(120,162,47,0.13);
+      color: #4d6d18;
+      font-weight: 800;
+      border-radius: 999px;
+      margin-bottom: 18px;
+      font-size: 14px;
+    }
+
+    .hero h2 {
+      margin: 0 0 16px;
+      font-size: clamp(34px, 5vw, 60px);
+      line-height: 1.05;
+      color: var(--navy);
+    }
+
+    .hero p {
+      margin: 0 0 22px;
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 700px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+
+    .feature-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+    .feature {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 16px;
+      box-shadow: var(--shadow);
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .hero-card, .card, .contact-box, .form-box, .about-box {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card {
+      padding: 26px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      inset: auto -40px -40px auto;
+      width: 170px;
+      height: 170px;
+      background: radial-gradient(circle, rgba(120,162,47,0.18), transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-card h3 {
+      margin-top: 0;
+      color: var(--navy);
+      font-size: 24px;
+    }
+
+    .hero-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 22px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .hero-card li {
+      padding-left: 26px;
+      position: relative;
+      font-weight: 600;
+    }
+
+    .hero-card li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--green);
+      font-weight: 900;
+    }
+
+    section { padding: 74px 0; }
+
+    .section-head {
+      text-align: center;
+      margin-bottom: 34px;
+    }
+
+    .section-head h3 {
+      margin: 0 0 10px;
+      font-size: 36px;
+      color: var(--navy);
+    }
+
+    .section-head p {
+      margin: 0 auto;
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .card {
+      padding: 24px;
+      transition: .2s ease;
+    }
+
+    .card:hover { transform: translateY(-4px); }
+
+    .card .icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      font-size: 24px;
+      background: linear-gradient(135deg, rgba(13,59,102,0.1), rgba(120,162,47,0.16));
+      margin-bottom: 16px;
+    }
+
+    .card h4 {
+      margin: 0 0 10px;
+      font-size: 23px;
+      color: var(--navy);
+    }
+
+    .card p { margin: 0; color: var(--muted); }
+
+    .about-grid, .contact-grid {
+      display: grid;
+      gap: 24px;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .about-box, .contact-box, .form-box { padding: 28px; }
+
+    .about-box h4, .contact-box h4, .form-box h4 {
+      margin: 0 0 14px;
+      color: var(--navy);
+      font-size: 28px;
+    }
+
+    .about-points {
+      display: grid;
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .point {
+      background: #f9fafb;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 14px 16px;
+      font-weight: 700;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .contact-item {
+      border: 1px solid var(--line);
+      background: #f9fafb;
+      border-radius: 16px;
+      padding: 16px;
+    }
+
+    .contact-item strong {
+      display: block;
+      color: var(--navy);
+      margin-bottom: 6px;
+    }
+
+    form {
+      display: grid;
+      gap: 14px;
+      margin-top: 10px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 14px;
+      border: 1px solid #cfd5dc;
+      font: inherit;
+      outline: none;
+      background: white;
+    }
+
+    input:focus, textarea:focus {
+      border-color: var(--navy);
+      box-shadow: 0 0 0 4px rgba(13,59,102,0.08);
+    }
+
+    textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .cta {
+      background: linear-gradient(135deg, var(--navy), #155083);
+      color: white;
+      border-radius: 28px;
+      padding: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .cta h4 {
+      margin: 0 0 6px;
+      font-size: 30px;
+    }
+
+    footer {
+      background: #0b2f52;
+      color: rgba(255,255,255,0.86);
+      padding: 28px 0;
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      width: 62px;
+      height: 62px;
+      border-radius: 50%;
+      background: #25d366;
+      color: white;
+      display: grid;
+      place-items: center;
+      font-size: 30px;
+      box-shadow: 0 14px 24px rgba(37,211,102,0.34);
+      z-index: 1001;
+    }
+
+    @media (max-width: 960px) {
+      .hero-grid, .services-grid, .about-grid, .contact-grid, .feature-row {
+        grid-template-columns: 1fr;
+      }
+      .nav {
+        padding: 14px 0;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .brand img { width: 60px; }
+    }
+
+    @media (max-width: 640px) {
+      .hero-actions { flex-direction: column; }
+      .btn { width: 100%; }
+      .brand-text h1 { font-size: 19px; }
+      .section-head h3 { font-size: 30px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <div>Schnelle Hilfe bei Wespen, Ratten, Mäusen, Bettwanzen und mehr</div>
+      <div>
+        Tel: <a href="tel:+498912345678">+49 89 123 45 678</a> · WhatsApp: <a href="https://wa.me/498912345678" target="_blank">Jetzt schreiben</a>
+      </div>
+    </div>
+  </div>
+
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#start">
+        <img src="/mnt/data/Screenshot 2026-03-21 204537.png" alt="Schädlingsbekämpfung Bayern Logo" />
+        <div class="brand-text">
+          <h1>Schädlingsbekämpfung</h1>
+          <span>BAYERN</span>
+          <small>Kompetent. Professionell. Zuverlässig.</small>
+        </div>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#start">Start</a>
+        <a href="#leistungen">Leistungen</a>
+        <a href="#ueber-uns">Über uns</a>
+        <a href="#kontakt">Kontakt</a>
+        <a class="btn btn-green" href="https://wa.me/498912345678?text=Hallo%2C%20ich%20brauche%20Hilfe%20bei%20einem%20Schädlingsproblem." target="_blank">WhatsApp</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="start">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Schnell erreichbar bei akuten Schädlingsproblemen</span>
+          <h2>Direkte Hilfe bei Schädlingsbefall in Bayern</h2>
+          <p>
+            Viele Kunden brauchen schnelle Unterstützung. Deshalb ist diese Website bewusst klar und einfach aufgebaut:
+            WhatsApp, Telefon und Kontaktformular sind sofort sichtbar, damit Sie uns ohne Umwege erreichen.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-green" href="https://wa.me/498912345678?text=Hallo%2C%20ich%20habe%20ein%20akutes%20Schädlingsproblem%20und%20brauche%20Hilfe." target="_blank">Per WhatsApp kontaktieren</a>
+            <a class="btn btn-primary" href="tel:+498912345678">Jetzt anrufen</a>
+            <a class="btn btn-outline" href="#kontakt">Anfrage senden</a>
+          </div>
+
+          <div class="feature-row">
+            <div class="feature">Schnelle Erreichbarkeit</div>
+            <div class="feature">Professionelle Hilfe</div>
+            <div class="feature">Zuverlässiger Service</div>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <h3>Sofort Kontakt aufnehmen</h3>
+          <ul>
+            <li>WhatsApp für schnelle und direkte Anfragen</li>
+            <li>Telefonisch sofort erreichbar</li>
+            <li>Kontaktformular für Rückruf oder Terminwunsch</li>
+            <li>Einsatzort und Problem einfach übermitteln</li>
+          </ul>
+          <a class="btn btn-green" href="https://wa.me/498912345678?text=Hallo%2C%20ich%20möchte%20eine%20Anfrage%20stellen." target="_blank">Jetzt WhatsApp senden</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="leistungen">
+      <div class="container">
+        <div class="section-head">
+          <h3>Unsere Leistungen</h3>
+          <p>Professionelle Schädlingsbekämpfung für Privatkunden und Unternehmen. Weitere Schädlinge auf Anfrage.</p>
+        </div>
+
+        <div class="services-grid">
+          <article class="card">
+            <div class="icon">🐝</div>
+            <h4>Wespen</h4>
+            <p>Sichere und fachgerechte Maßnahmen bei Wespenproblemen rund um Haus, Garten oder Gewerbeobjekte.</p>
+          </article>
+
+          <article class="card">
+            <div class="icon">🐀</div>
+            <h4>Ratten</h4>
+            <p>Effektive Bekämpfung und nachhaltige Lösungen gegen Rattenbefall im Innen- und Außenbereich.</p>
+          </article>
+
+          <article class="card">
+            <div class="icon">🐭</div>
+            <h4>Mäuse</h4>
+            <p>Schnelle Hilfe bei Mäusebefall in Wohnungen, Kellern, Lagern und gewerblichen Räumen.</p>
+          </article>
+
+          <article class="card">
+            <div class="icon">🛏️</div>
+            <h4>Bettwanzen</h4>
+            <p>Diskrete, professionelle Behandlung bei Bettwanzenbefall mit Fokus auf schnelle Unterstützung.</p>
+          </article>
+
+          <article class="card">
+            <div class="icon">🪳</div>
+            <h4>Schaben</h4>
+            <p>Zuverlässige Bekämpfung von Schaben in privaten Haushalten, Gastronomie und Unternehmen.</p>
+          </article>
+
+          <article class="card">
+            <div class="icon">🐜</div>
+            <h4>Ameisen</h4>
+            <p>Gezielte Maßnahmen gegen Ameisenbefall im Innen- und Außenbereich.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="ueber-uns">
+      <div class="container">
+        <div class="section-head">
+          <h3>Über uns</h3>
+          <p>Unser Schwerpunkt liegt auf Zuverlässigkeit, professionellem Auftreten und schneller Hilfe im Ernstfall.</p>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-box">
+            <h4>Schädlingsbekämpfung Bayern</h4>
+            <p>
+              Wir unterstützen Privatkunden und Unternehmen bei akuten Schädlingsproblemen. Unser Ziel ist es,
+              schnell erreichbar zu sein und unkomplizierte Kontaktwege anzubieten, damit Kunden ohne Verzögerung Hilfe anfordern können.
+            </p>
+            <p>
+              Besonders wichtig ist uns die direkte Kommunikation: per WhatsApp für schnelle Anfragen,
+              telefonisch für sofortige Rücksprache und per Formular für ausführlichere Anliegen.
+            </p>
+          </div>
+
+          <div class="about-box">
+            <h4>Warum Kunden uns wählen</h4>
+            <div class="about-points">
+              <div class="point">Schnelle Reaktion auf neue Anfragen</div>
+              <div class="point">Kompetentes und seriöses Auftreten</div>
+              <div class="point">Klare Kommunikation ohne Umwege</div>
+              <div class="point">WhatsApp und Telefon sofort sichtbar</div>
+              <div class="point">Einsatz in Bayern und Umgebung</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="kontakt">
+      <div class="container">
+        <div class="section-head">
+          <h3>Kontakt</h3>
+          <p>Kontaktieren Sie uns jetzt direkt per WhatsApp, telefonisch oder über das Formular.</p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-box">
+            <h4>Direkt erreichbar</h4>
+            <p style="color: var(--muted); margin-top: 0;">Bei akuten Fällen empfehlen wir WhatsApp oder einen direkten Anruf.</p>
+
+            <div class="contact-list">
+              <div class="contact-item">
+                <strong>Telefon</strong>
+                <a href="tel:+498912345678">+49 89 123 45 678</a>
+              </div>
+
+              <div class="contact-item">
+                <strong>WhatsApp</strong>
+                <a href="https://wa.me/498912345678?text=Hallo%2C%20ich%20habe%20ein%20Schädlingsproblem%20und%20brauche%20Hilfe." target="_blank">Jetzt Nachricht senden</a>
+              </div>
+
+              <div class="contact-item">
+                <strong>E-Mail</strong>
+                <a href="mailto:info@schaedlingsbekaempfung-bayern.de">info@schaedlingsbekaempfung-bayern.de</a>
+              </div>
+
+              <div class="contact-item">
+                <strong>Einsatzgebiet</strong>
+                Bayern und Umgebung
+              </div>
+            </div>
+          </div>
+
+          <div class="form-box">
+            <h4>Kontaktformular</h4>
+            <form>
+              <input type="text" placeholder="Name" />
+              <input type="tel" placeholder="Telefonnummer" />
+              <input type="email" placeholder="E-Mail" />
+              <input type="text" placeholder="Adresse / Einsatzort" />
+              <textarea placeholder="Kurze Beschreibung des Problems"></textarea>
+              <button class="btn btn-primary" type="button">Anfrage senden</button>
+            </form>
+            <p style="color: var(--muted); margin-bottom: 0;">Hinweis: Für die schnellste Rückmeldung empfehlen wir WhatsApp oder Telefon.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="cta">
+          <div>
+            <h4>Schnelle Hilfe benötigt?</h4>
+            <div>Kontaktieren Sie Schädlingsbekämpfung Bayern jetzt direkt über WhatsApp oder telefonisch.</div>
+          </div>
+          <div style="display:flex; gap:12px; flex-wrap:wrap;">
+            <a class="btn btn-green" href="https://wa.me/498912345678?text=Hallo%2C%20ich%20brauche%20dringend%20Hilfe%20bei%20einem%20Schädlingsproblem." target="_blank">WhatsApp</a>
+            <a class="btn btn-outline" style="background:white;" href="tel:+498912345678">Anrufen</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      © 2026 Schädlingsbekämpfung Bayern – Alle Rechte vorbehalten
+    </div>
+  </footer>
+
+  <a class="whatsapp-float" href="https://wa.me/498912345678?text=Hallo%2C%20ich%20habe%20ein%20Schädlingsproblem." target="_blank" aria-label="WhatsApp Kontakt">✆</a>
+</body>
+</html>
