@@ -1321,6 +1321,11 @@
       justify-content:flex-start;
     }
 
+    .hero-copy-poppins,
+    .hero-copy-poppins *{
+      font-family:'Poppins', Arial, Helvetica, sans-serif;
+    }
+
     @media (max-width: 980px){
       .hero-grid,
       .services-grid,
