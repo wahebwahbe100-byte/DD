@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" role="img" aria-label="Schädlingsbekämpfung Bayern Logo">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f2137"/>
+      <stop offset="100%" stop-color="#117a43"/>
+    </linearGradient>
+  </defs>
+  <rect width="256" height="256" rx="58" fill="url(#g)"/>
+  <path d="M128 48c34 0 62 25 68 58 8 40-14 86-68 114-54-28-76-74-68-114 6-33 34-58 68-58Z" fill="#f8fafc" opacity=".98"/>
+  <path d="M128 76c24 0 44 18 48 41 5 27-9 58-48 79-39-21-53-52-48-79 4-23 24-41 48-41Z" fill="#117a43"/>
+  <path d="M128 101c11 0 20 9 20 20 0 8-5 15-12 18v25h-16v-25c-7-3-12-10-12-18 0-11 9-20 20-20Z" fill="#fff"/>
+  <circle cx="128" cy="121" r="8" fill="#117a43"/>
+</svg>
