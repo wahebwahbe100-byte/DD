@@ -2156,3 +2156,225 @@
 .active-page{color:#fff !important;}
 .nav-links > a.active-page:not(.btn)::after{width:100%;}
 .page-intro{padding-top:20px;}
+
+
+/* ===== 2026 layout + typography refresh ===== */
+:root{
+  --max: 100%;
+}
+
+html{
+  font-size:15px;
+}
+
+body,
+.hero-copy-poppins,
+.hero-copy-poppins *{
+  font-family:"Inter", "Poppins", "Roboto", Arial, Helvetica, sans-serif !important;
+  letter-spacing:-0.01em;
+}
+
+.container{
+  width:100%;
+  max-width:100% !important;
+  margin:0;
+  padding-left:clamp(16px, 3vw, 44px);
+  padding-right:clamp(16px, 3vw, 44px);
+}
+
+.topbar{
+  font-size:13px;
+}
+
+.nav{
+  min-height:76px;
+  gap:18px;
+}
+
+.brand-text h1{
+  font-size:20px;
+}
+
+.brand-text span{
+  font-size:13px;
+  letter-spacing:0.18em;
+}
+
+.brand-text small{
+  font-size:12px;
+}
+
+.nav-links{
+  gap:12px;
+  font-size:14px;
+}
+
+.nav-links > a:not(.btn),
+.nav-links a.btn{
+  white-space:nowrap;
+}
+
+.btn{
+  padding:12px 18px;
+  font-size:14px;
+  border-radius:16px;
+  white-space:nowrap;
+}
+
+.hero{
+  padding:74px 0 54px;
+}
+
+.hero-intro,
+.hero-grid{
+  gap:24px;
+}
+
+.hero-copy{
+  width:100%;
+  max-width:none;
+}
+
+.hero-badge{
+  font-size:12px;
+  padding:8px 12px;
+}
+
+.hero h2{
+  max-width:none;
+  font-size:clamp(28px, 4vw, 52px);
+  line-height:1.08;
+}
+
+.hero p,
+.section-head p,
+.journey-head p,
+.faq-answer-inner,
+.gallery-meta span,
+.gallery-overlay p{
+  font-size:15px;
+  line-height:1.72;
+  max-width:none;
+}
+
+.hero-actions{
+  gap:12px;
+}
+
+.gallery-slider,
+.hero-showcase-wrap,
+.gallery-slide,
+.gallery-card,
+.gallery-track{
+  width:100%;
+  max-width:none;
+}
+
+.gallery-card{
+  aspect-ratio:16 / 7.2;
+  border-radius:24px;
+}
+
+.gallery-card img{
+  object-fit:contain;
+}
+
+.slide-whatsapp-btn{
+  font-size:13px;
+  padding:11px 16px;
+  border-radius:14px;
+  white-space:nowrap;
+}
+
+.gallery-btn{
+  width:44px;
+  height:44px;
+  font-size:18px;
+}
+
+.service-card p,
+.benefit-card p,
+.trust-card p,
+.about-box p,
+.contact-box p,
+.form-box p,
+.step-content p,
+.point,
+.contact-item{
+  font-size:14px;
+}
+
+@media (min-width: 1200px){
+  .container{
+    padding-left:48px;
+    padding-right:48px;
+  }
+
+  .hero h2,
+  .hero p{
+    max-width:none;
+  }
+}
+
+@media (max-width: 900px){
+  .hero-intro,
+  .hero-grid{
+    grid-template-columns:1fr;
+  }
+
+  .gallery-card{
+    aspect-ratio:16 / 9.2;
+  }
+}
+
+@media (max-width: 640px){
+  html{
+    font-size:14px;
+  }
+
+  .topbar{
+    font-size:12px;
+  }
+
+  .brand-text h1{
+    font-size:17px;
+  }
+
+  .brand-text span{
+    font-size:11px;
+  }
+
+  .nav-links{
+    font-size:13px;
+  }
+
+  .btn{
+    font-size:13px;
+  }
+
+  .hero{
+    padding:36px 0 28px;
+  }
+
+  .hero h2{
+    font-size:clamp(24px, 8vw, 36px);
+  }
+
+  .hero p,
+  .section-head p,
+  .journey-head p,
+  .faq-answer-inner,
+  .gallery-overlay p{
+    font-size:14px;
+  }
+
+  .gallery-card{
+    aspect-ratio:4 / 3.1;
+    border-radius:20px;
+  }
+
+  .slide-whatsapp-btn{
+    white-space:normal;
+    text-align:center;
+  }
+}
