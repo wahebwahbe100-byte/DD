@@ -1303,14 +1303,22 @@
     .hero-intro{
       position:relative;
       z-index:1;
-      display:grid;
-      grid-template-columns:1.12fr .88fr;
-      gap:28px;
-      align-items:start;
+      display:block;
+      width:100%;
     }
 
     .hero-note{
       padding:24px 26px;
+    }
+
+    .hero-copy{
+      max-width:900px;
+      width:100%;
+      margin:0 auto;
+    }
+
+    .hero-copy .hero-actions{
+      justify-content:flex-start;
     }
 
     @media (max-width: 980px){
